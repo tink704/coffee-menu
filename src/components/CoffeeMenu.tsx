@@ -61,7 +61,7 @@ export const CoffeeMenu = ({ items, onAdd }: { items: any[], onAdd: (item: any) 
             <div className="mb-6">
               <div className="flex justify-between items-start mb-2">
                 <h3 className="text-2xl font-serif text-gold-gradient font-bold leading-[1.1] pr-4">{item.name}</h3>
-                <span className="text-gold font-bold text-2xl drop-shadow-[0_0_10px_rgba(197,160,89,0.3)]">${item.price.toFixed(2)}</span>
+                <span className="text-gold font-bold text-2xl drop-shadow-[0_0_10px_rgba(197,160,89,0.3)]">{item.price.toFixed(2)} Birr</span>
               </div>
               <p className="text-foreground/40 text-sm font-light leading-relaxed line-clamp-2 italic">
                 {item.description}

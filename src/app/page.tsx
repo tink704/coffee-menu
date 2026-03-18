@@ -12,12 +12,12 @@ import { ShoppingBag } from "lucide-react";
 import { useState } from "react";
 
 const ALL_MENU_ITEMS = [
-  { id: "1", name: "Ceremonial Buna", category: "Buna", description: "Slow-roasted coffee ceremony.", price: 50, image: "/coffee-menu/jebena.png", tag: "Today's Best" },
-  { id: "2", name: "Deluxe Beyaynetu", category: "Beyaynetu", description: "Traditional vegan platter.", price: 200, image: "/coffee-menu/beyaynetu.png", tag: "Customer Fav" },
-  { id: "3", name: "Gourmet Tibs", category: "Tibs", description: "Sautéed marinated beef.", price: 250, image: "/coffee-menu/tibs.png", tag: "New Item" },
-  { id: "4", name: "Heritage Kitfo", category: "Tibs", description: "Seasoned minced beef delicacy.", price: 280, image: "/coffee-menu/kitfo.png", tag: "Elite Selection" },
-  { id: "5", name: "Traditional Firfir", category: "Bread", description: "Spiced injera Breakfast.", price: 180, image: "/coffee-menu/beyaynetu.png", tag: "Morning Special" },
-  { id: "6", name: "Injera Roll", category: "Bread", description: "Savory veggie rolls.", price: 150, image: "/coffee-menu/beyaynetu.png", tag: "Snack" },
+  { id: "1", name: "Ceremonial Buna", category: "Buna", description: "Slow-roasted coffee ceremony.", price: 50, image: "/jebena.png", tag: "Today's Best" },
+  { id: "2", name: "Deluxe Beyaynetu", category: "Beyaynetu", description: "Traditional vegan platter.", price: 200, image: "/beyaynetu.png", tag: "Customer Fav" },
+  { id: "3", name: "Gourmet Tibs", category: "Tibs", description: "Sautéed marinated beef.", price: 250, image: "/tibs.png", tag: "New Item" },
+  { id: "4", name: "Heritage Kitfo", category: "Tibs", description: "Seasoned minced beef delicacy.", price: 280, image: "/kitfo.png", tag: "Elite Selection" },
+  { id: "5", name: "Traditional Firfir", category: "Bread", description: "Spiced injera Breakfast.", price: 180, image: "/beyaynetu.png", tag: "Morning Special" },
+  { id: "6", name: "Injera Roll", category: "Bread", description: "Savory veggie rolls.", price: 150, image: "/beyaynetu.png", tag: "Snack" },
 ];
 
 export default function Home() {
@@ -75,10 +75,10 @@ export default function Home() {
             >
               <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4 flex flex-col md:flex-row md:items-center gap-2 md:gap-4 tracking-tight">
                 <span className="text-foreground opacity-90">
-                  {activeSection === "home" ? "Liquid" : activeSection === "menu" ? "Artisan" : activeSection === "history" ? "Heritage" : "Select"}
+                  {activeSection === "home" ? "Biftu" : activeSection === "menu" ? "Artisan" : activeSection === "history" ? "Heritage" : "Select"}
                 </span>
                 <span className="text-gold-gradient italic font-normal tracking-normal">
-                  {activeSection === "home" ? "Heritage" : activeSection === "menu" ? "Cuisine" : activeSection === "history" ? "Archives" : "Rewards"}
+                  {activeSection === "home" ? "Legacy" : activeSection === "menu" ? "Cuisine" : activeSection === "history" ? "Archives" : "Rewards"}
                 </span>
               </h1>
               <div className="flex items-center gap-4 text-gold/30">

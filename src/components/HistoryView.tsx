@@ -30,7 +30,7 @@ export const HistoryView = () => {
               <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10" />
               <div className="text-xs text-foreground/40 self-center">+2 items</div>
             </div>
-            <div className="text-lg font-bold text-gold">$24.50</div>
+            <div className="text-lg font-bold text-gold">24.50 Birr</div>
           </div>
         </GlassCard>
       ))}

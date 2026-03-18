@@ -64,7 +64,7 @@ export const OrderPanel = ({
                     <span className="text-[10px] font-bold w-4 text-center text-gold">{item.quantity}</span>
                     <button onClick={() => onUpdate(item.id, 1)} className="text-gold/30 hover:text-gold transition-colors"><Plus size={10} /></button>
                   </div>
-                  <span className="font-bold text-gold text-sm tracking-tight">${(item.price * item.quantity).toFixed(2)}</span>
+                  <span className="font-bold text-gold text-sm tracking-tight">{(item.price * item.quantity).toFixed(2)} Birr</span>
                 </div>
               </div>
             </div>
@@ -75,15 +75,15 @@ export const OrderPanel = ({
       <div className="mt-auto space-y-5 pt-10 border-t border-gold/10">
         <div className="flex justify-between text-[11px] uppercase tracking-[0.2em] font-medium text-foreground/40">
           <span>Sub Total</span>
-          <span className="text-foreground/80">${subtotal.toFixed(2)}</span>
+          <span className="text-foreground/80">{subtotal.toFixed(2)} Birr</span>
         </div>
         <div className="flex justify-between text-[11px] uppercase tracking-[0.2em] font-medium text-foreground/40">
           <span>VAT (15%)</span>
-          <span className="text-foreground/80">${tax.toFixed(2)}</span>
+          <span className="text-foreground/80">{tax.toFixed(2)} Birr</span>
         </div>
         <div className="flex justify-between text-2xl font-serif font-bold pt-4">
           <span className="text-gold-gradient">Tray Total</span>
-          <span className="text-gold drop-shadow-[0_0_15px_rgba(197,160,89,0.2)]">${total.toFixed(2)}</span>
+          <span className="text-gold drop-shadow-[0_0_15px_rgba(197,160,89,0.2)]">{total.toFixed(2)} Birr</span>
         </div>
 
         <motion.button
