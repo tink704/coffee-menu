@@ -3,6 +3,7 @@
 import { motion, Variants } from "framer-motion";
 import { GlassCard } from "./ui/GlassCard";
 import { FloatingElement } from "./ui/FloatingElement";
+import Image from "next/image";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -47,10 +48,12 @@ export const CoffeeMenu = ({ items, onAdd }: { items: any[], onAdd: (item: any) 
             <div className="absolute inset-0 auric-glow z-0" />
             <FloatingElement duration={5 + (i % 3)} yOffset={-20} rotateOffset={6}>
               <div className="relative w-full h-full p-2">
-                <img
+                <Image
                   src={item.image}
                   alt={item.name}
-                  className="w-full h-full object-contain filter drop-shadow-[0_45px_45px_rgba(0,0,0,0.85)] brightness-110 contrast-110"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-contain filter drop-shadow-[0_45px_45px_rgba(0,0,0,0.85)] brightness-110 contrast-110"
                 />
               </div>
             </FloatingElement>

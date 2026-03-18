@@ -49,7 +49,13 @@ export const OrderPanel = ({
           >
             <div className="flex gap-6 items-center">
               <div className="w-20 h-20 relative bg-white/[0.02] border border-white/5 rounded-2xl overflow-visible p-2 shadow-inner rim-light group-hover:bg-white/[0.05] transition-all duration-500">
-                <img src={item.image} alt={item.name} className="w-full h-full object-contain drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500" />
+                <Image 
+                  src={item.image} 
+                  alt={item.name} 
+                  fill
+                  sizes="80px"
+                  className="object-contain drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500" 
+                />
               </div>
               <div className="flex-1">
                 <div className="flex justify-between items-start mb-2">

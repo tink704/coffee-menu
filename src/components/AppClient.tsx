@@ -6,7 +6,7 @@ import { CoffeeMenu } from "@/components/CoffeeMenu";
 import { CategoryTabs } from "@/components/CategoryTabs";
 import { Background } from "@/components/ui/Background";
 import { ShoppingBag } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 
 // Dynamically import OrderPanel to reduce initial bundle size
@@ -24,6 +24,16 @@ export default function AppClient({ items }: AppClientProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [cart, setCart] = useState<any[]>([]);
   const [isOrderPanelOpen, setIsOrderPanelOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Cart Logic
   const addToCart = (item: any) => {
@@ -66,7 +76,7 @@ export default function AppClient({ items }: AppClientProps) {
         <div className="flex-1 md:ml-28 md:mr-[400px] p-8 md:p-14 pb-32 md:pb-14 overflow-y-auto custom-scrollbar relative z-10">
           <header className="mb-16 md:mb-24 flex justify-between items-start relative z-20">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
@@ -102,13 +112,13 @@ export default function AppClient({ items }: AppClientProps) {
             </motion.button>
           </header>
 
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false}>
             {activeSection === "home" || activeSection === "menu" ? (
               <motion.div
                 key="menu"
-                initial={{ opacity: 0, y: 20 }}
+                initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
+                exit={isMobile ? { opacity: 0 } : { opacity: 0, y: -20 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
               >
                 <CategoryTabs

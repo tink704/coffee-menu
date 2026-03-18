@@ -11,6 +11,8 @@ interface FloatingElementProps {
   className?: string;
 }
 
+import { useEffect, useState } from "react";
+
 export const FloatingElement = ({
   children,
   duration = 5,
@@ -18,6 +20,14 @@ export const FloatingElement = ({
   rotateOffset = 2,
   className = "",
 }: FloatingElementProps) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+  }, []);
+
+  if (isMobile) return <div className={className}>{children}</div>;
+
   return (
     <motion.div
       className={className}

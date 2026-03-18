@@ -5,12 +5,22 @@ import { useEffect, useState } from "react";
 
 export const Background = () => {
   const [isMounted, setIsMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   if (!isMounted) return <div className="fixed inset-0 -z-50 bg-background" />;
+
+  // Reduce particle count on mobile for performance
+  const particleCount = isMobile ? 2 : 6;
 
   return (
     <div className="fixed inset-0 -z-50 overflow-hidden bg-background">
@@ -22,7 +32,7 @@ export const Background = () => {
       
       {/* Animated Floating Beans (Particles) */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(6)].map((_, i) => (
+        {[...Array(particleCount)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute rounded-full bg-gold/10 blur-xl"
