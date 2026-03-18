@@ -1,8 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Search } from "lucide-react";
-import { useEffect, useState } from "react";
 
 const CATEGORIES = ["All", "Buna", "Tibs", "Beyaynetu", "Bread"];
 
@@ -15,12 +13,6 @@ export const CategoryTabs = ({
   onCategoryChange: (cat: string) => void, 
   onSearch: (query: string) => void 
 }) => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    setIsMobile(window.matchMedia("(max-width: 768px)").matches);
-  }, []);
-
   return (
     <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-16">
       <div className="flex gap-4 overflow-x-auto pb-4 lg:pb-0 custom-scrollbar scroll-smooth">
@@ -36,14 +28,7 @@ export const CategoryTabs = ({
           >
             {cat}
             {activeCategory === cat && (
-              isMobile ? (
-                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-gold rounded-full shadow-[0_0_10px_#C5A059]" />
-              ) : (
-                <motion.div
-                  layoutId="cat-indicator"
-                  className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-gold rounded-full shadow-[0_0_10px_#C5A059]"
-                />
-              )
+              <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-gold rounded-full shadow-[0_0_10px_#C5A059]" />
             )}
           </button>
         ))}

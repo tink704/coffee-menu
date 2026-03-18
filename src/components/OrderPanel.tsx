@@ -1,5 +1,6 @@
+"use client";
+
 import { Trash2, Plus, Minus, ShoppingBag } from "lucide-react";
-import { motion } from "framer-motion";
 import { GlassCard } from "./ui/GlassCard";
 import Image from "next/image";
 
@@ -21,7 +22,7 @@ export const OrderPanel = ({
   const total = subtotal + tax;
 
   return (
-    <aside className={`fixed right-0 top-0 h-full w-full md:w-96 volcanic-stone border-l border-white/5 p-8 md:p-10 flex flex-col z-[120] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0 md:translate-x-0 md:opacity-100"}`}>
+    <aside className={`fixed right-0 top-0 h-full w-full md:w-96 volcanic-stone border-l border-white/5 p-8 md:p-10 flex flex-col z-[120] transition-all duration-300 ${isOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0 md:translate-x-0 md:opacity-100"}`}>
       {/* Vellum Receipt Overlay Effect */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay tibeb-pattern" />
       <div className="absolute top-0 bottom-0 left-0 w-[1px] bg-gradient-to-b from-transparent via-gold/20 to-transparent" />
@@ -41,9 +42,7 @@ export const OrderPanel = ({
             <p className="font-serif italic text-lg opacity-40">The tray awaits your selection</p>
           </div>
         ) : cart.map((item, i) => (
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
+          <div 
             key={item.id} 
             className="group relative"
           >
@@ -74,7 +73,7 @@ export const OrderPanel = ({
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
 
@@ -92,13 +91,11 @@ export const OrderPanel = ({
           <span className="text-gold drop-shadow-[0_0_15px_rgba(197,160,89,0.2)]">{total.toFixed(2)} Birr</span>
         </div>
 
-        <motion.button
-          className="w-full bg-gold text-background font-bold py-6 rounded-3xl mt-8 shadow-[0_30px_60px_rgba(197,160,89,0.15)] text-xs tracking-[0.3em] uppercase transition-all rim-light"
-          whileHover={{ scale: 1.02, backgroundColor: "#D4B982", boxShadow: "0 40px 80px rgba(197,160,89,0.25)" }}
-          whileTap={{ scale: 0.98 }}
+        <button
+          className="w-full bg-gold text-background font-bold py-6 rounded-3xl mt-8 shadow-[0_30px_60px_rgba(197,160,89,0.15)] text-xs tracking-[0.3em] uppercase transition-all rim-light hover:bg-[#D4B982]"
         >
           Confirm Experience
-        </motion.button>
+        </button>
       </div>
     </aside>
   );

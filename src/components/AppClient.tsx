@@ -1,12 +1,11 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
 import { DashboardSidebar } from "@/components/DashboardSidebar";
 import { CoffeeMenu } from "@/components/CoffeeMenu";
 import { CategoryTabs } from "@/components/CategoryTabs";
 import { Background } from "@/components/ui/Background";
 import { ShoppingBag } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import dynamic from "next/dynamic";
 
 // Dynamically import OrderPanel to reduce initial bundle size
@@ -24,16 +23,6 @@ export default function AppClient({ items }: AppClientProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [cart, setCart] = useState<any[]>([]);
   const [isOrderPanelOpen, setIsOrderPanelOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   // Cart Logic
   const addToCart = (item: any) => {
@@ -75,11 +64,7 @@ export default function AppClient({ items }: AppClientProps) {
 
         <div className="flex-1 md:ml-28 md:mr-[400px] p-8 md:p-14 pb-32 md:pb-14 overflow-y-auto custom-scrollbar relative z-10">
           <header className="mb-16 md:mb-24 flex justify-between items-start relative z-20">
-            <motion.div
-              initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
+            <div>
               <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4 flex flex-col md:flex-row md:items-center gap-2 md:gap-4 tracking-tight">
                 <span className="text-foreground opacity-90">
                   {activeSection === "home" ? "Biftu" : activeSection === "menu" ? "Artisan" : activeSection === "history" ? "Heritage" : "Select"}
@@ -95,13 +80,11 @@ export default function AppClient({ items }: AppClientProps) {
                 </p>
               </div>
               <div className="tibeb-line mt-8 opacity-20" />
-            </motion.div>
+            </div>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <button
               onClick={() => setIsOrderPanelOpen(true)}
-              className="md:hidden p-4 bg-gold text-background rounded-2xl relative shadow-2xl rim-light"
+              className="md:hidden p-4 bg-gold text-background rounded-2xl relative shadow-2xl rim-light transition-transform hover:scale-105 active:scale-95"
             >
               <ShoppingBag size={24} />
               {cart.length > 0 && (
@@ -109,18 +92,12 @@ export default function AppClient({ items }: AppClientProps) {
                   {cart.length}
                 </span>
               )}
-            </motion.button>
+            </button>
           </header>
 
-          <AnimatePresence mode="wait" initial={false}>
+          <div className="transition-opacity duration-300">
             {activeSection === "home" || activeSection === "menu" ? (
-              <motion.div
-                key="menu"
-                initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={isMobile ? { opacity: 0 } : { opacity: 0, y: -20 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-              >
+              <div>
                 <CategoryTabs
                   activeCategory={activeCategory}
                   onCategoryChange={setActiveCategory}
@@ -129,9 +106,9 @@ export default function AppClient({ items }: AppClientProps) {
                 <div className="pb-20">
                   <CoffeeMenu items={filteredItems} onAdd={addToCart} />
                 </div>
-              </motion.div>
+              </div>
             ) : null}
-          </AnimatePresence>
+          </div>
         </div>
 
         <OrderPanel
