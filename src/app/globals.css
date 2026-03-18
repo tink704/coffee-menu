@@ -1,26 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600&display=swap');
 @import "tailwindcss";
 
+@theme {
+  --color-background: #0D0D0D;
+  --color-foreground: #F5F5F5;
+  
+  --color-gold-light: #E8D5B5;
+  --color-gold: #C5A059;
+  --color-gold-dark: #8E6D38;
+  
+  --color-coffee-light: #4E342E;
+  --color-coffee: #2C1B18;
+  --color-coffee-dark: #1A0F0D;
+
+  --default-font-family: 'Outfit', sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #0D0D0D;
+  --foreground: #F5F5F5;
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+@layer utilities {
+  .glass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(40px);
+    border: 1px solid rgba(197, 160, 89, 0.1);
+    border-radius: 2rem;
+    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
+  }
+
+  .rim-light {
+    position: relative;
+  }
+
+  .rim-light::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(145deg, rgba(232, 213, 181, 0.3), transparent 40%, transparent 60%, rgba(142, 109, 56, 0.1));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  
+  .text-gold-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(135deg, #E8D5B5 0%, #C5A059 50%, #8E6D38 100%);
+  }
+
+  .auric-glow {
+    background: radial-gradient(circle at center, rgba(197, 160, 89, 0.15) 0%, transparent 70%);
+    filter: blur(40px);
+  }
+}
+
+.volcanic-stone {
+  background: radial-gradient(circle at 50% -20%, #1A1A1A 0%, #0D0D0D 80%);
+}
+
+.subtle-grain::after {
+  content: "";
+  position: fixed;
+  top: -150%;
+  left: -150%;
+  width: 300%;
+  height: 300%;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 9999;
+  animation: noise 8s steps(10) infinite;
+}
+
+@keyframes noise {
+  0% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -5%); }
+  20% { transform: translate(-10%, 5%); }
+  30% { transform: translate(5%, -10%); }
+  40% { transform: translate(-5%, 15%); }
+  50% { transform: translate(-10%, 5%); }
+  60% { transform: translate(15%, 0); }
+  70% { transform: translate(0, 10%); }
+  80% { transform: translate(-15%, 0); }
+  90% { transform: translate(10%, 5%); }
+  100% { transform: translate(5%, 0); }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+.tibeb-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-gold) 50%, transparent 100%);
+  opacity: 0.3;
+  width: 100%;
+}
+
+.gold-glow {
+  box-shadow: 0 0 40px rgba(197, 160, 89, 0.15);
 }
