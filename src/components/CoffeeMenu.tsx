@@ -1,56 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { GlassCard } from "./ui/GlassCard";
 import { FloatingElement } from "./ui/FloatingElement";
-import Image from "next/image";
 
-const MENU_ITEMS = [
-  {
-    name: "Ceremonial Buna",
-    description: "Slow-roasted coffee ceremony.",
-    price: "50 birr",
-    image: "/jebena.png",
-    items: "Today's Best",
-  },
-  {
-    name: "Deluxe Beyaynetu",
-    description: "Traditional vegan platter.",
-    price: "200 birr",
-    image: "/beyaynetu.png",
-    items: "Customer Fav",
-  },
-  {
-    name: "Gourmet Tibs",
-    description: "Sautéed marinated beef.",
-    price: "250 birr",
-    image: "/tibs.png",
-    items: "New Item",
-  },
-  {
-    name: "Heritage Kitfo",
-    description: "Seasoned minced beef delicacy.",
-    price: "280 birr",
-    image: "/kitfo.png",
-    items: "Elite Selection",
-  },
-  {
-    name: "Traditional Firfir",
-    description: "Spiced injera Breakfast.",
-    price: "180 birr",
-    image: "/beyaynetu.png",
-    items: "Morning Special",
-  },
-  {
-    name: "Injera Roll",
-    description: "Savory veggie rolls.",
-    price: "150 birr",
-    image: "/beyaynetu.png",
-    items: "Snack",
-  },
-];
-
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -60,7 +14,7 @@ const containerVariants = {
   }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
