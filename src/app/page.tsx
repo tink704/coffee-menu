@@ -6,7 +6,6 @@ import { CoffeeMenu } from "@/components/CoffeeMenu";
 import { OrderPanel } from "@/components/OrderPanel";
 import { CategoryTabs } from "@/components/CategoryTabs";
 import { Background } from "@/components/ui/Background";
-import { PromosView } from "@/components/PromosView";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { ShoppingBag } from "lucide-react";
 import { useState } from "react";
@@ -78,7 +77,7 @@ export default function Home() {
                   {activeSection === "home" ? "Biftu" : activeSection === "menu" ? "Artisan" : activeSection === "history" ? "Heritage" : "Select"}
                 </span>
                 <span className="text-gold-gradient italic font-normal tracking-normal">
-                  {activeSection === "home" ? "Legacy" : activeSection === "menu" ? "Cuisine" : activeSection === "history" ? "Archives" : "Rewards"}
+                  {activeSection === "home" ? "Legacy" : activeSection === "menu" ? "Cuisine" : "Cuisine"}
                 </span>
               </h1>
               <div className="flex items-center gap-4 text-gold/30">
@@ -123,17 +122,7 @@ export default function Home() {
                   <CoffeeMenu items={filteredItems} onAdd={addToCart} />
                 </div>
               </motion.div>
-            ) : (
-              <motion.div
-                key="promos"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5 }}
-              >
-                <PromosView />
-              </motion.div>
-            )}
+            ) : null}
           </AnimatePresence>
         </div>
 

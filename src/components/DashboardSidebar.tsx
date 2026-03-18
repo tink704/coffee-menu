@@ -1,12 +1,11 @@
 "use client";
 
-import { Home, UtensilsCrossed, History, Percent, LogOut, Diamond } from "lucide-react";
+import { Home, UtensilsCrossed, History, LogOut, Diamond } from "lucide-react";
 import { motion } from "framer-motion";
 
 const NAV_ITEMS = [
   { id: "home", icon: Home, label: "Home" },
   { id: "menu", icon: UtensilsCrossed, label: "Cuisine" },
-  { id: "promos", icon: Percent, label: "Rewards" },
 ];
 
 export const DashboardSidebar = ({ 
