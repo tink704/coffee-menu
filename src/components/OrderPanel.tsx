@@ -1,7 +1,6 @@
 "use client";
 
 import { Trash2, Plus, Minus, ShoppingBag } from "lucide-react";
-import { GlassCard } from "./ui/GlassCard";
 import Image from "next/image";
 
 export const OrderPanel = ({ 
@@ -51,8 +50,8 @@ export const OrderPanel = ({
                 <Image 
                   src={item.image} 
                   alt={item.name} 
-                  fill
-                  sizes="80px"
+                  width={80}
+                  height={80}
                   className="object-contain drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500" 
                 />
               </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import { GlassCard } from "./ui/GlassCard";
-import { FloatingElement } from "./ui/FloatingElement";
 import Image from "next/image";
 
 export const CoffeeMenu = ({ items, onAdd }: { items: any[], onAdd: (item: any) => void }) => {
@@ -13,21 +12,17 @@ export const CoffeeMenu = ({ items, onAdd }: { items: any[], onAdd: (item: any) 
           className="relative z-10 group cursor-pointer"
           onClick={() => onAdd(item)}
         >
-          {/* Food Image Container - Adjusted for mobile visibility */}
-          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-48 h-48 md:w-52 md:h-52 z-50 pointer-events-none">
-            <div className="absolute inset-0 auric-glow z-0" />
-            <FloatingElement>
-              <div className="relative w-full h-full p-2">
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  fill
-                  priority={i < 4}
-                  sizes="(max-width: 768px) 192px, 208px"
-                  className="object-contain filter drop-shadow-[0_45px_45px_rgba(0,0,0,0.85)] brightness-110 contrast-110"
-                />
-              </div>
-            </FloatingElement>
+          {/* Food Image Container */}
+          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-48 h-48 md:w-52 md:h-52 z-50 pointer-events-none flex items-center justify-center">
+             <div className="absolute inset-0 auric-glow z-0" />
+             <Image
+                src={item.image}
+                alt={item.name}
+                width={208}
+                height={208}
+                priority={i < 4}
+                className="object-contain filter drop-shadow-[0_45px_45px_rgba(0,0,0,0.85)] brightness-110 contrast-110 z-10 w-full h-full"
+              />
           </div>
 
           {/* Luxury Glass Card */}
